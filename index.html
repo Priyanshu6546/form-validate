@@ -12,13 +12,12 @@
             <h2 class="text-danger text-center">Form</h2>
            <div >
                   <center>  <form name="myform" action="./ee.html">
-                                <label for="name">NAME:</label> <br>
-                                <input type="text" id="n" name="n111" required > <span id="e1" style="color: red;"></span><br>
+                                <label for="name">NAME:</label> <br><input type="text" id="n" name="n111" required > <span id="e1" style="color: red;"></span><br>
 
                                 <label for="name">ROLL NO:</label> <br>
                                 <input type="text" id="n1" name="n2" required > <span id="b1" style="color: red;"></span><br>
 
-                                <label for="name">MOBILE NO:</label><span id="b22"></span> <br>
+                                <label for="name">MOBILE NO:</label><span id="b22" style="color: red;"></span> <br>
                                 <input type="text" id="n11" name="n3" required > <span id="b2" style="color: red;"></span><br>
                            
                                
@@ -33,7 +32,7 @@
                                 <input type="checkbox" name="c14" id="c3"> PYTHON <br>
                                 <input type="checkbox" name="c15" id="c4"> GIT HUB <br>
                                 
-                                Year of study  <span id="ans" style=""></span> <br>
+                                Year of study  <span id="ww" style="color:red"></span> <br>
                                 <input type="radio" id="1" name="fav_language" value="1" required>
                                  <label for="1">I</label><br>
                                 <input type="radio" id="2" name="fav_language" value="2" required>
@@ -45,12 +44,13 @@
 
 
                                     <label for="cars">Choose your department:</label>
-                                    <select name="dpt" id="dpt">
+                                    <select name="dept" id="dpt">
+                                        <option value="">please select from below</option>
                                       <option value="IT">IT</option>
                                       <option value="CSE">CSE</option>
                                       <option value="Mech">MECH</option>                                    
                                       <option value="ft">FT</option>
-                                    </select><br>
+                                    </select><span id="rrr" style="color:red"></span><br>
                                     E-mail: <br>
                                     <input type="email" id="n23" name="tt" required > <span id="vv" style="color: red;"></span><br>
                                     <br><br>
@@ -106,12 +106,43 @@
            else{
                document.getElementById('qwer').innerHTML="*Please select an option";
            }
+           /*var state=document.getElementById("dpt");
+            if(state.value=="")
+            {
+                document.getElementById('ww').innerHTML="*Please select the year";
+                //alert("Select department");
+                return false;
+            }*/
+            var op=document.myform.fav_language;
+            var sts=0;
+            for(var i=0;i<op.length;i++)
+            {
+                if(op[i].checked==true)
+                {
+                    sts=1;
+                    break;
+                }
+            }
+            if(sts==0)
+            {
+                //alert("Select Gender")
+                document.getElementById('ww').innerHTML="*Please select the year";
+                return false;
+            }
+            var state=document.getElementById("dpt").value;
+            if(state=="")
+            {
+                //alert("Select State");
+                document.getElementById('rrr').innerHTML="*Please select the department";
+                return false;
+            }
            let w = document.forms["myform"]["tt"].value;
            if (w == "") {
           // alert("Name must be filled out");
            document.getElementById('vv').innerHTML="*Email must be filled out";
            return false;
            }
+          
         }
           
         </script>
